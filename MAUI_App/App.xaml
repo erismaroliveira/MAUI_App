@@ -1,0 +1,103 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MAUI_App.Pages"
+             x:Class="MAUI_App.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+    <Application.MainPage>
+        <!--<Shell>
+            <TabBar x:Name="PhoneTabs">
+                <Tab Title="Home" Icon="home.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+                </Tab>
+                <Tab Title="Setting" Icon="setting.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:SettingPage}" />
+                </Tab>
+                <Tab Title="About" Icon="sobre.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+                </Tab>
+                <Tab Title="About" Icon="sobre.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+                </Tab>
+                <Tab Title="About" Icon="sobre.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+                </Tab>
+            </TabBar>
+        </Shell>-->
+
+        <Shell FlyoutBehavior="Flyout" FlyoutHeaderBehavior="Fixed" FlyoutVerticalScrollMode="Auto">
+            
+            <!--Flyout Header-->
+            <Shell.FlyoutHeader>
+                <Grid BackgroundColor="{StaticResource Tertiary}"
+                      HeightRequest="120"
+                      Padding="0,10">
+                    <Image Source="xamarin_logo.png" WidthRequest="200" />
+                    <!--<Label Text="Erismar" 
+                           TextColor="White"
+                           FontSize="42"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Fill"/>-->
+                </Grid>
+            </Shell.FlyoutHeader>
+            
+            <!--Footer-->
+            <Shell.FlyoutFooter>
+                <Grid BackgroundColor="{StaticResource Tertiary}"
+                      HeightRequest="{OnPlatform iOS=52, Default=32}"
+                      Padding="{OnPlatform iOS='0, 5, 0, 25', Default='0, 5, 0, 5'}">
+                    <Label Text="Copyright 2022 Erismar"
+                           TextColor="White"
+                           FontSize="Small"
+                           HorizontalOptions="Center"/>
+
+                </Grid>
+            </Shell.FlyoutFooter>
+
+            <Shell.FlyoutBackdrop>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                    <GradientStop Color="#8A2387" Offset="0.1" />
+                    <GradientStop Color="#E94057" Offset="0.6" />
+                    <GradientStop Color="#58ADF4" Offset="1.6" />
+                </LinearGradientBrush>
+            </Shell.FlyoutBackdrop>
+
+            <Shell.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="0.25*, 0.75*" Padding="0,10">
+                        <Image Source="{Binding FlyoutIcon}" 
+                               HeightRequest="45"
+                               HorizontalOptions="Center"/>
+
+                        <Label Grid.Column="1" 
+                               Text="{Binding Title}"
+                               FontSize="Small"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Shell.ItemTemplate>
+            
+            <FlyoutItem Title="Home" Icon="home.svg">
+                <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+            </FlyoutItem>
+            <FlyoutItem Title="Setting" Icon="setting.svg">
+                <ShellContent ContentTemplate="{DataTemplate local:SettingPage}" />
+            </FlyoutItem>
+            <FlyoutItem Title="About" Icon="sobre.svg">
+                <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+            </FlyoutItem>
+        </Shell>
+    </Application.MainPage>
+    
+</Application>
